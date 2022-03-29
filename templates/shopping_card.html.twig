@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block body %}
+    {% include('utils/header.html.twig') %}
+    <div class="columns mt-3">
+
+        <div class="column"></div>
+
+        <div class="column is-two-thirds">
+
+            <div class="box">
+                <div class="columns">
+
+                    <div class="column is-one-fifth">
+                        <img src="{{ asset('image/universityBlue.png') }}" alt="Placeholder image">
+                    </div>
+
+                    <div class="column is-one-fifth">
+                        <p> <br>Air Jordan 1 University Blue</p>
+                    </div>
+
+                    <div class="column is-one-fifth">
+                        <p><br>Size 10.5US</p>
+                    </div>
+
+
+                    <div class="column is-one-fifth">
+                        <div class="row mt-2">
+                            <a class="button has-text-right">
+                            <span class="icon is-small">
+                                <i class="fas fa-solid fa-minus"></i>
+                            </span>
+                            </a>
+
+                            <p class="mr-2 ml-2">1</p>
+
+                            <a class="button has-text-left">
+                            <span class="icon is-small">
+                                <i class="fas fa-solid fa-plus"></i>
+                            </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="column is-one-fifth">
+                        <p><br>320.00$</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="column"></div>
+    </div>
+
+    <div class="row">
+
+                        <div class="columns mr-6">
+
+                            <div class="column is-one-quarter"></div>
+
+                            <div class="column is-one-quarter"></div>
+
+                            <div class="column is-one-quarter"></div>
+
+                            <div class="column is-one-quarter">
+
+                                <p>Subtotal : <strong>320.00$</strong></p>
+                                <button class="button is-rounded is-success">Checkout</button>
+
+                            </div>
+
+                        </div>
+    </div>
+
+    <div class="row mt-6"></div>
+
+    {% include('utils/footer.html.twig') %}
+{% endblock %}
