@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block body %}
+    {% include('utils/header.html.twig') %}
+
+    <div class="columns">
+        <div class="column is-2"></div>
+
+        <div class="column is is-2 mt-6">
+            <div class="field">
+                <p>User</p>
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input is-rounded" type="email" placeholder="Email">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </p>
+            </div>
+
+            <div class="field">
+                <p>Password</p>
+                <p class="control has-icons-left">
+                    <input class="input is-rounded" type="password" placeholder="Password">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+            </div>
+
+            <button class="button is-success is-rounded mt-2">Login</button>
+        </div>
+    </div>
+
+
+{% endblock %}
