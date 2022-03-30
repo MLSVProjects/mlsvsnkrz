@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block body %}
+    {% include('utils/header.html.twig') %}
+    <section class="section">
+
+        <div class="container">
+            <div class="row">
+                <img src="{{ asset('image/bandeau.jpg') }}" >
+            </div>
+
+            <div class="is-flex is-flex-direction-row is-justify-content-center">
+
+                <div class="is-flex is-flex-direction-row is-align-items-center is-justify-content-space-evenly">
+                    <a class="mr-2">Shop by brand</a>
+                    <img class="mr-2" src="{{ asset('image/logoJordan.png') }}" width="45px" heigth="45px">
+                    <img class="mr-2" src="{{ asset('image/logoAdidas.png') }}" width="45px" heigth="45px">
+                    <img src="{{ asset('image/logoNike.png') }}" width="45px" heigth="45px">
+                </div>
+            </div>
+
+            <div class="row">
+                <h4 class>Most Popular</h4>
+            </div>
+
+            <div class="row">
+                <div class="is-flex is-flex-direction-row is-justify-content-center">
+                    <div class="card mr-5">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{{ asset('image/midChicago.png') }}" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Air Jordan Mid Chicago</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris.
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail </a>
+                            <a href="#" class="card-footer-item">Add to favorite</a>
+                        </footer>
+                    </div>
+
+                    <div class="card mr-5">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{{ asset('image/waveRunner.png') }}" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Yeezy 700 Wave Runner</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris.
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail</a>
+                            <a href="#" class="card-footer-item">Add to favorite</a>
+                        </footer>
+                    </div>
+                    <div class="card mr-5">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{{ asset('image/universityBlue.png') }}" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Air Jordan 1 University Blue</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris.
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{{ path('product_detail') }}" class="card-footer-item" >More detail</a>
+                            <a href="#" class="card-footer-item">Add to favorite</a>
+                        </footer>
+                    </div>
+                    <div class="card mr-5">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="{{ asset('image/yeezyBoost350V2.png') }}" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-content">
+                                    <p class="title is-4">Yeezy 350 V2 Black/Red</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                Phasellus nec iaculis mauris.
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail</a>
+                            <a href="#" class="card-footer-item">Add to favorite</a>
+                        </footer>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    {% include('utils/footer.html.twig') %}
+{% endblock %}

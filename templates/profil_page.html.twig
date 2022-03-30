@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block body %}
+    {% include('utils/header.html.twig') %}
+
+<div class="row mt-6">
+    <div class="columns">
+
+        <div class="column is-2"></div>
+
+        <div class="column">
+            <p>My profil</p>
+        </div>
+
+        <div class="column"></div>
+
+    </div>
+</div>
+
+<div class="row mt-3">
+    <div class="columns">
+        <div class="column is-2"></div>
+
+{% include('utils/profilBox.html.twig') %}
+    </div>
+</div>
+
+    {% include('utils/footer.html.twig') %}
+{% endblock %}
