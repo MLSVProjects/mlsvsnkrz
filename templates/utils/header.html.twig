@@ -1,0 +1,53 @@
+<nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="{{ path('home_page') }}">
+            <img src="{{ asset('image/logo.png') }}" >
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+            <a class="navbar-item" href="{{ path('product_pages') }}">
+                Men
+            </a>
+
+            <a class="navbar-item" href="{{ path('product_pages') }}">
+                Women
+            </a>
+
+            <a class="navbar-item">
+                Brands
+            </a>
+
+            <a class="navbar-item">
+                About us
+            </a>
+
+        </div>
+
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class ="icon has-text-black">
+                        <i class="fas fa-search "></i>
+                    </a>
+                    <a class ="icon has-text-black">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                    <a onclick="window.location.href='{{ path('profil_page') }}'" class ="icon has-text-black">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <a class ="icon has-text-black">
+                            <i class="fas fa-question-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

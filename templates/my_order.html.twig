@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block body %}
+    {% include('utils/header.html.twig') %}
+
+    <div class="row mt-6">
+        <div class="columns">
+
+            <div class="column is-2"></div>
+
+            <div class="column">
+                <p>My orders</p>
+            </div>
+
+            <div class="column"></div>
+
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="columns">
+            <div class="column is-2"></div>
+
+            {% include('utils/profilBox.html.twig') %}
+
+            <div class="column is-6">
+                <div class="row">
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-half">
+                                <p><strong>Order Number #E232LDSSN</strong></p>
+                                <br>
+                                <p>20/01/2021</p>
+                            </div>
+
+                            <div class="column is-half ml-6">
+                                <p>152.00$</p>
+                                <br>
+                                <a href="{{ path('view_detail') }}">View detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-half">
+                                <p><strong>Order Number #1U3592018</strong></p>
+                                <br>
+                                <p>20/01/2021</p>
+                            </div>
+
+                            <div class="column is-half ml-6">
+                                <p>220.00$</p>
+                                <br>
+                                <a href="{{ path('view_detail') }}">View detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="box mb-6">
+                        <div class="columns">
+                            <div class="column is-half">
+                                <p><strong>Order Number #2342LKDSN</strong></p>
+                                <br>
+                                <p>20/01/2021</p>
+                            </div>
+
+                            <div class="column is-half ml-6">
+                                <p>375.00$</p>
+                                <br>
+                                <a href="{{ path('view_detail') }}">View detail</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% include('utils/footer.html.twig') %}
+{% endblock %}
