@@ -19,7 +19,7 @@ class Product
     private $name;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $image_url;
+    private $image;
 
     #[ORM\Column(type: 'datetime_immutable')]
     private $created_at;
@@ -70,14 +70,14 @@ class Product
         return $this;
     }
 
-    public function getImageUrl(): ?string
+    public function getImage(): ?string
     {
-        return $this->image_url;
+        return $this->image;
     }
 
-    public function setImageUrl(?string $image_url): self
+    public function setImage(?string $image): self
     {
-        $this->image_url = $image_url;
+        $this->image = $image;
 
         return $this;
     }
