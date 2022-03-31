@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="row">
+            <div class="col"></div>
+            <h1>Register</h1>
+
+    {{ form_start(registrationForm) }}
+            <fieldset>
+                <legend>My identity</legend>
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.password) }}
+            </fieldset>
+            <fieldset>
+                <legend>My contact details</legend>
+            </fieldset>
+
+
+        {{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+        </div>
+
+    </section>
+{% endblock %}

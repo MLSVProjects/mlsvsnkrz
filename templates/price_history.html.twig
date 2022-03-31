@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block body %}
+    {% include('utils/header.html.twig') %}
+
+    <div class="columns mt-3">
+
+        <div class="column"></div>
+
+        <div class="column is-two-thirds">
+
+            <div class="row">
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input" type="text" placeholder="Back to product">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-solid fa-arrow-left"></i>
+                        </span>
+
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+
+                <div class="columns">
+                    <div class="column">
+                            <img src="{{ asset('image/midChicago.png') }}" >
+                    </div>
+
+                    <div class="column is-three-fifths">
+                        <div class="row">
+                            <p class="is-size-4">
+                                <b>Jordan 1 Mid Chicago</b>
+                            </p>
+                        </div>
+
+                        <div class="row mt-2">
+                            <p class="is-size-5">From 268$</p>
+                        </div>
+
+                        <div class="row mt-2">
+                            <a class="button has-text-right">
+                            <span class="icon is-small">
+                                <i class="fas fa-solid fa-heart"></i>
+                            </span>
+                                <p>Add to Favorite</p>
+                            </a>
+                        </div>
+
+                        <div class="row mt-2">
+                            <p>Notify me when the price is :</p>
+                        </div>
+
+                        <div class="row mt-2">
+                            <div class="columns">
+                                <div class="column is-one-quarter">
+                                    <input class="input" type="text" placeholder="________$">
+                                </div>
+
+                                <div class="row mt-2">
+                                    <a class="button is-rounded is-black has-text-left">
+                            <span class="icon is-small">
+                                <i class="fas fa-solid fa-bell"></i>
+                            </span>
+                                        <p>Create Alarm</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="table-container mt-5 mb-6">
+                            <table class="table table is-bordered is-striped is-narrow is-hoverable is-fullwidth ">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Price</th>
+                                    </tr>
+
+                                    <tbody>
+                                    <tr>
+                                        <td>15/01/2022</td>
+                                        <td>315.00$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16/01/2022</td>
+                                        <td>310.00$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>17/01/2022</td>
+                                        <td>215.00$</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18/01/2022</td>
+                                        <td>240.00$</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>19/01/2022</td>
+                                        <td>268.00$</td>
+                                    </tr>
+                                    </tbody>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="box mt-6">
+                <div class="columns">
+                    <div class="column is-one-third">
+                        <p>Jordan 1 Mid Chicago</p>
+                    </div>
+
+                    <div class="column is-one-third">
+                        <p class=" has-text-centered">268$</p>
+                    </div>
+
+                    <div class="column is-one-third has-text-right">
+                        <button class="button is-rounded is-black is-small" onclick="window.location.href='{{ path('shopping_card') }}'">Add to carte</button>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        <div class="column"></div>
+
+    </div>
+
+    {% include('utils/footer.html.twig') %}
+{% endblock %}

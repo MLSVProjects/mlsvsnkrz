@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block body %}
+    {% include('utils/header.html.twig') %}
+
+    <div class="row mt-6">
+        <div class="columns">
+
+            <div class="column is-2"></div>
+
+            <div class="column">
+                <p>My favorite</p>
+            </div>
+
+            <div class="column"></div>
+
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="columns">
+            <div class="column is-2"></div>
+
+            {% include('utils/profilBox.html.twig') %}
+
+            <div class="column is-6">
+                <div class="row">
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-one-third">
+                                <img src="{{ asset('image/waveRunner.png') }}" alt="Placeholder image">
+                            </div>
+
+                            <div class="column is-one-third mt-6">
+                                <p>Yeezy WaveRunner</p>
+                            </div>
+
+                            <div class="column is-one-third ml-6 mt-6">
+                                <a class="button has-text-right">
+                            <span class="icon is-small">
+                                <i class="fas fa-solid fa-ban"></i>
+                            </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-one-third">
+                                <img src="{{ asset('image/midChicago.png') }}" alt="Placeholder image">
+                            </div>
+
+                            <div class="column is-one-third mt-6">
+                                <p>Air Jordan Mid Chicago</p>
+                            </div>
+
+                            <div class="column is-one-third ml-6 mt-6">
+                                <a class="button has-text-right">
+                            <span class="icon is-small">
+                                <i class="fas fa-solid fa-ban"></i>
+                            </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-one-third">
+                                <img src="{{ asset('image/yeezyBoost350V2.png') }}" alt="Placeholder image">
+                            </div>
+
+                            <div class="column is-one-third mt-6">
+                                <p>Yeezy Boost 350 V2</p>
+                            </div>
+
+                            <div class="column is-one-third ml-6 mt-6">
+                                <a class="button has-text-right">
+                            <span class="icon is-small">
+                                <i class="fas fa-solid fa-ban"></i>
+                            </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% include('utils/footer.html.twig') %}
+{% endblock %}

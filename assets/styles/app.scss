@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap%27');
+
+$family-sans-serif: "Montserrat", sans-serif;
+
+@import "~bulma/bulma.sass";
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
