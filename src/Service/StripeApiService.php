@@ -2,13 +2,26 @@
 
 namespace App\Service;
 
+use App\Repository\ProductRepository;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 class StripeApiService
 {
-	public function createCheckout($stripeSK, $success_url, $cancel_url)
-	{
-		$products = $this->formatProducts();
 
+	private $router;
+	private $productRepository;
+
+    public function __construct(UrlGeneratorInterface $router, $stripeSK, ProductRepository $productRepository)
+    {
 		\Stripe\Stripe::setApiKey($stripeSK);
+        $this->router = $router;
+		$this->productRepository = $productRepository;
+    }
+
+	public function createCheckout($cart)
+	{
+		$products = $this->formatProducts($cart);
+
 		$checkout = \Stripe\Checkout\Session::create([
 			'line_items' =>
 			$products,
@@ -24,36 +37,38 @@ class StripeApiService
 					'shipping_rate' => 'shr_1KIcyvEKUqoXpcCcJjzM9e27',
 				],
 			],
-			'success_url' => $success_url,
-			'cancel_url' => $cancel_url,
+			'success_url' => $this->router->generate('success_url', [], UrlGeneratorInterface::ABSOLUTE_URL)."?session_id={CHECKOUT_SESSION_ID}",
+			'cancel_url' => $this->router->generate('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
 		]);
 
 		return $checkout;
 	}
 
-	public function formatProducts() : Array
+	public function formatProducts($cart) : Array
 	{
-		return [
-			[
+		foreach($cart as $product) {
+			$productEntity = $this->productRepository->find($product['product_id']);
+			$finalCart[]=[
 				'price_data' => [
 					'currency' => 'usd',
 					'product_data' => [
-						'name' => 'T-shirt',
+						'name' => $productEntity->getName(),
 					],
-					'unit_amount' => 2000,
+					'unit_amount' => floatval($productEntity->getPrice())*100,
 				],
-				'quantity' => 1,
-			],
-			[
-				'price_data' => [
-					'currency' => 'usd',
-					'product_data' => [
-						'name' => 'Jordan 4 x Union LA',
-					],
-					'unit_amount' => 78200,
-				],
-				'quantity' => 2,
-			]
-		];
+				'quantity' => $product['quantity'],
+			];
+		}
+		return $finalCart;
+	}
+
+	public function getCheckoutSession($session_id): \Stripe\Checkout\Session
+	{
+		return \Stripe\Checkout\Session::retrieve($session_id);
+	}
+
+	public function getPaymentIntent($payment_intent_id)
+	{
+		return \Stripe\PaymentIntent::retrieve($payment_intent_id);
 	}
 }
