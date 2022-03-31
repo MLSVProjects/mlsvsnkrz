@@ -32,14 +32,14 @@ class PriceHistoryRepository extends ServiceEntityRepository
         $bookmarks = $repository->findBy(
             ['product_id' == $entity->getProductId()]
         );
-        
+
         foreach ($bookmarks as $value) {
             $user = $doctrine->getRepository(User::class)->find($value->getUserId());
             $email = (new Email())
                 ->from('testsymfo27@gmail.com')
                 ->to($user->getEmail())
                 ->subject('MLSVsnkrz price alert')
-                ->text('One of your whatchlist item is now cheaper !')
+                ->text('One of your whatchlist item is now cheaper ,' + $user->getName() + '!')
                 ->html('<p>One of your whatchlist item is now cheaper !</p>');
 
             $mailer->send($email);
