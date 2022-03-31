@@ -9,37 +9,38 @@
     {# Bulma offers only 6 levels of margin. So we have to make nested rows #}
 
     {# Our product text #}
-    <div class="row ml-6 mt-6">
         <div class="row ml-6 mt-6">
             <div class="row ml-6 mt-6">
-                <h4 class>Our Products </h4>
-            </div>
-        </div>
-    </div>
-
-    {# Button#}
-    <div class="columns">
-         <div class="column">
-            <div class="row ml-6 mt-5">
-                <div class="row ml-6">
-                    <div class="row ml-6">
-                        <button class="button is-rounded">Newest</button>
-                        <button class="button is-rounded is-black ml-2">Price</button>
-                        <button class="button is-rounded is-black ml-2">Price</button>
-                    </div>
+                <div class="row ml-6 mt-6">
+                    <h4 class>Our Products </h4>
                 </div>
             </div>
-         </div>
-        <div class="column">
-            <div class="row ml-6 mt-5">
-                <div class="row ml-6">
+        </div>
+
+        {# Button#}
+        <div class="columns">
+             <div class="column">
+                <div class="row ml-6 mt-5">
+                    <div class="row ml-6">
+                        <div class="row ml-6">
+                            <button class="button is-rounded">Newest</button>
+                            <button class="button is-rounded is-black ml-2">Price</button>
+                            <button class="button is-rounded is-black ml-2">Price</button>
+                        </div>
+                    </div>
+                </div>
+             </div>
+            <div class="column">
+                <div class="row ml-6 mt-5">
                     <div class="row ml-6">
                         <div class="row ml-6">
                             <div class="row ml-6">
                                 <div class="row ml-6">
-                                    <button class="button is-rounded">Previous</button>
-                                        <p3>1/10 </p3>
-                                    <button class="button is-rounded is-black ml-2">Next</button>
+                                    <div class="row ml-6">
+                                        <button class="button is-rounded">Previous</button>
+                                            <p3>1/10 </p3>
+                                        <button class="button is-rounded is-black ml-2">Next</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -47,234 +48,131 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
 
-    <div class="row ml-6 mt-6">
         <div class="row ml-6 mt-6">
-                <div class="row ml-6 mt-6">
-                    <div class="row ml-2">
-                    <h4 class="has-text-weight-bold">Filter by</h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    {# box on left #}
-    <div class="columns">
-        <div class="column ml-6">
-            <div class="ml-6">
-                <div class="ml-6">
-                    <div class="ml-1">
-                        <div class="box">
-                            <span class="icon-text">
-                                 <a class="ml-2 is-size-5">Brand</a>
-                              <span class="icon">
-                                <i class="fas fa-home"></i>
-                              </span>
-                            </span>
-                            <a><br></br>Adidas<br></a>
-                            <a>Jordan<br></a>
-                            <a>New Balance<br></a>
-                            <a>Puma<br></a>
-                            <a>Nike<br></a>
-                        </div>
-
-                        <div class="box">
-                            <span class="icon-text">
-                                 <a class="ml-2 is-size-5">Size(US)</a>
-                              <span class="icon">
-                                <i class="fas fa-home"></i>
-                              </span>
-                            </span>
-                            <a><br></br>6</a>
-                            <a>6.5</a>
-                            <a>7</a>
-                            <a>7.5</a>
-                            <a>8</a>
-                            <a>8.5</a>
-                            <a>9</a>
-                            <a>9.5</a>
-                            <a>10</a>
-                        </div>
-
-                        <div class="box">
-                            <span class="icon-text">
-                                 <a class="ml-2 is-size-5">Price(USD)</a>
-                              <span class="icon">
-                                <i class="fas fa-home"></i>
-                              </span>
-                            </span>
-                        </div>
-
-                        <div class="box">
-                            <span class="icon-text">
-                                 <a class="ml-2 is-size-5">Release Date</a>
-                              <span class="icon">
-                                <i class="fas fa-home"></i>
-                              </span>
-                            </span>
-                        </div>
+            <div class="row ml-6 mt-6">
+                    <div class="row ml-6 mt-6">
+                        <div class="row ml-2">
+                        <h4 class="has-text-weight-bold">Filter by</h4>
                     </div>
                 </div>
             </div>
         </div>
 
-        {# Cards #}
+
+        {# box on left #}
+
+
+        <div class="columns">
+            <div class="column ml-6">
+                <div class="ml-6">
+                    <div class="ml-6">
+                        <div class="ml-1">
+                            <div class="box">
+                                <span class="icon-text">
+                                     <a class="ml-2 is-size-5">Brand</a>
+                                  <span class="icon">
+                                    <i class="fas fa-home"></i>
+                                  </span>
+                                </span>
+                                <a><br></br>Adidas<br></a>
+                                <a>Jordan<br></a>
+                                <a>New Balance<br></a>
+                                <a>Puma<br></a>
+                                <a>Nike<br></a>
+                            </div>
+
+                            <div class="box">
+                                <span class="icon-text">
+                                     <a class="ml-2 is-size-5">Size(US)</a>
+                                  <span class="icon">
+                                    <i class="fas fa-home"></i>
+                                  </span>
+                                </span>
+                                <a><br></br>6</a>
+                                <a>6.5</a>
+                                <a>7</a>
+                                <a>7.5</a>
+                                <a>8</a>
+                                <a>8.5</a>
+                                <a>9</a>
+                                <a>9.5</a>
+                                <a>10</a>
+                            </div>
+
+                            <div class="box">
+                                <span class="icon-text">
+                                     <a class="ml-2 is-size-5">Price(USD)</a>
+                                  <span class="icon">
+                                    <i class="fas fa-home"></i>
+                                  </span>
+                                </span>
+                            </div>
+
+                            <div class="box">
+                                <span class="icon-text">
+                                     <a class="ml-2 is-size-5">Release Date</a>
+                                  <span class="icon">
+                                    <i class="fas fa-home"></i>
+                                  </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% set nb = 0 %}
+
         <div class="column is-two-thirds">
             <div class="row">
                 <div class="is-flex is-flex-direction-row is-justify-content-center">
-                    <div class="card mr-5">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="{{ asset('image/midChicago.png') }}" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4">Air Jordan Mid Chicago</p>
+
+                    {% for p in product %}
+
+                        {% set nb = nb+1 %}
+
+                        <div class="card mr-5">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <img style="max-height: 200px; max-width: 300px" src="{{ asset(p.image) }}" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <div class="media">
+                                    <div class="media-content">
+                                        <p class="title is-4">{{ p.name }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    {{ p.price }}
                                 </div>
                             </div>
+                            <footer class="card-footer">
+                                <a href="/product/{{ p.getId() }}" class="card-footer-item">More detail</a>
+                                <a href="#" class="card-footer-item">Add to favorite</a>
+                            </footer>
+                        </div>
 
-                            <div class="content">
-                                Lorem ipsum dolor sit amet
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail</a>
-                            <a href="#" class="card-footer-item">Add to favorite</a>
-                        </footer>
-                    </div>
+                        {% if nb%3 == 0 %}
 
-                    <div class="card mr-5">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="{{ asset('image/waveRunner.png') }}" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4">Yeezy 700 Wave Runner</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Lorem ipsum dolor sit amet
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail</a>
-                            <a href="#" class="card-footer-item">Add to favorite</a>
-                        </footer>
-                    </div>
-                    <div class="card mr-5">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="{{ asset('image/universityBlue.png') }}" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4">Air Jordan 1 University Blue</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Lorem ipsum dolor sit amet
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail</a>
-                            <a href="#" class="card-footer-item">Add to favorite</a>
-                        </footer>
-                    </div>
                 </div>
-
             </div>
+        <div class="row mt-3">
+            <div class="is-flex is-flex-direction-row is-justify-content-center">
+                        {% endif %}
 
-
-            {# Cards #}
-            <div class="row mt-6">
-                <div class="is-flex is-flex-direction-row is-justify-content-center">
-                    <div class="card mr-5">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="{{ asset('image/yeezyBoost350V2.png') }}" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4">Air Jordan Mid Chicago</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Lorem ipsum dolor sit amet
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail</a>
-                            <a href="#" class="card-footer-item">Add to favorite</a>
-                        </footer>
-                    </div>
-
-                    <div class="card mr-5">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="{{ asset('image/waveRunner.png') }}" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4">Yeezy 700 Wave Runner</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Lorem ipsum dolor sit amet
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail</a>
-                            <a href="#" class="card-footer-item">Add to favorite</a>
-                        </footer>
-                    </div>
-                    <div class="card mr-5">
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src="{{ asset('image/universityBlue.png') }}" alt="Placeholder image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <div class="media">
-                                <div class="media-content">
-                                    <p class="title is-4">Air Jordan 1 University Blue</p>
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                Lorem ipsum dolor sit amet
-                            </div>
-                        </div>
-                        <footer class="card-footer">
-                            <a href="{{ path('product_detail') }}" class="card-footer-item">More detail</a>
-                            <a href="#" class="card-footer-item">Add to favorite</a>
-                        </footer>
-                    </div>
-                </div>
-
-
-            </div>
+                    {% endfor %}
 
         </div>
-    </div>
+        </div>
+        </div>
+        </div>
 
     {% include('utils/footer.html.twig') %}
+
 {% endblock %}

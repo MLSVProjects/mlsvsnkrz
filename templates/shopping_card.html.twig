@@ -14,11 +14,11 @@
                 <div class="columns">
 
                     <div class="column is-one-fifth">
-                        <img src="{{ asset('image/universityBlue.png') }}" alt="Placeholder image">
+                        <img src="{{ asset(product.image) }}" alt="Placeholder image">
                     </div>
 
                     <div class="column is-one-fifth">
-                        <p> <br>Air Jordan 1 University Blue</p>
+                        <p> <br>{{ product.name }}</p>
                     </div>
 
                     <div class="column is-one-fifth">
@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="column is-one-fifth">
-                        <p><br>320.00$</p>
+                        <p><br>{{ product.price }}$</p>
                     </div>
 
                 </div>
@@ -67,7 +67,7 @@
 
                             <div class="column is-one-quarter">
 
-                                <p>Subtotal : <strong>320.00$</strong></p>
+                                <p>Subtotal : <strong>{{ product.price }}$</strong></p>
                                 <button class="button is-rounded is-success">Checkout</button>
 
                             </div>
