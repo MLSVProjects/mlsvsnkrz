@@ -49,6 +49,7 @@ class Product
 
     public function __construct()
     {
+		$this->created_at = new \DateTimeImmutable();
         $this->productDetails = new ArrayCollection();
         $this->priceHistories = new ArrayCollection();
     }
@@ -213,4 +214,9 @@ class Product
 
         return $this;
     }
+
+	public function __toString(): string
+	{
+		return $this->name;
+	}
 }
