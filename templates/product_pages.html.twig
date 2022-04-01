@@ -6,46 +6,22 @@
     {% include('utils/header.html.twig') %}
 
 
-    {# Bulma offers only 6 levels of margin. So we have to make nested rows #}
+	<div class="container mt-6">
 
-    {# Our product text #}
-        <div class="row ml-6 mt-6">
-            <div class="row ml-6 mt-6">
-                <div class="row ml-6 mt-6">
-                    <h4 class>Our Products </h4>
-                </div>
-            </div>
+        <div>
+            <h4 class>Our Products </h4>
         </div>
 
-        {# Button#}
-        <div class="columns">
+        <div class="columns is-vcentered">
              <div class="column">
-                <div class="row ml-6 mt-5">
-                    <div class="row ml-6">
-                        <div class="row ml-6">
                             <button class="button is-rounded">Newest</button>
                             <button class="button is-rounded is-black ml-2">Price</button>
                             <button class="button is-rounded is-black ml-2">Price</button>
-                        </div>
-                    </div>
-                </div>
              </div>
             <div class="column">
-                <div class="row ml-6 mt-5">
-                    <div class="row ml-6">
-                        <div class="row ml-6">
-                            <div class="row ml-6">
-                                <div class="row ml-6">
-                                    <div class="row ml-6">
                                         <button class="button is-rounded">Previous</button>
                                             <p3>1/10 </p3>
                                         <button class="button is-rounded is-black ml-2">Next</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -138,7 +114,9 @@
                         <div class="card mr-5">
                             <div class="card-image">
                                 <figure class="image is-4by3">
+									{% if p.image is not null %}
                                     <img style="max-height: 200px; max-width: 300px" src="{{ asset(p.image) }}" alt="Placeholder image">
+									{% endif %}
                                 </figure>
                             </div>
                             <div class="card-content">
@@ -172,6 +150,7 @@
         </div>
         </div>
         </div>
+	</div>
 
     {% include('utils/footer.html.twig') %}
 

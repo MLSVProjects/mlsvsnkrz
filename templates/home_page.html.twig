@@ -38,7 +38,9 @@
                         <div class="card mr-5">
                             <div class="card-image">
                                 <figure class="image is-4by3">
+									{% if p.image is not null %}
                                     <img style="height: 200px; width: 300px" src="{{ asset(p.image) }}" alt="Placeholder image">
+									{% endif %}
                                 </figure>
                             </div>
                             <div class="card-content">
