@@ -9,14 +9,17 @@ use Doctrine\ORM\Event\LifecycleEventArgs as EventLifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 class EasyAdminSubscriber implements EventSubscriberInterface
 {
 	private $doctrine;
+	private $em;
 
-    public function __construct(ManagerRegistry $doctrine)
+    public function __construct(ManagerRegistry $doctrine, EntityManagerInterface $em)
     {
         $this->doctrine = $doctrine;
+		$this->em = $em;
     }
 
     public function getSubscribedEvents(): array
@@ -48,9 +51,19 @@ class EasyAdminSubscriber implements EventSubscriberInterface
 	{
 		$entity = $args->getObject();
 
+		$uow = $this->em->getUnitOfWork();
+		$uow->computeChangeSets(); // do not compute changes if inside a listener
+		$changeset = $uow->getEntityChangeSet($entity);
+
         if (!($entity instanceof Product)) {
             return;
         }
+		if(array_key_exists('deleted_at', $changeset) && $changeset['deleted_at'][1]!=null) {
+			return;
+		}
+		if(array_key_exists('updated_at', $changeset)) {
+			return;
+		}
 		$entity->setUpdatedAt(new \DateTimeImmutable());
 		$manager = $this->doctrine->getManager();
 		$priceHistory = new PriceHistory();
