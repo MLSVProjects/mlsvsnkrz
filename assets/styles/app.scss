@@ -1,9 +1,21 @@
 @charset "utf-8";
 
 // Import a Google Font
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap%27');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-$family-sans-serif: "Montserrat", sans-serif;
+$family-sans-serif: "Montserrat";
 
 @import "~bulma/bulma.sass";
-@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+//@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+
+$box-shadow: 0 0 0em 0em rgba($scheme-invert, 1), 0 0px 0 1px rgba($scheme-invert, 1);
+$card-shadow: 0 0 0em 0em rgba($scheme-invert, 1), 0 0px 0 0px rgba($scheme-invert, 1);
+
+@import "~bulma/sass/elements/_all.sass";
+@import "~bulma/sass/base/_all.sass";
+@import "~bulma/sass/components/_all.sass";
+@import "~bulma/sass/form/_all.sass";
+@import "~bulma/sass/grid/_all.sass";
+@import "~bulma/sass/helpers/_all.sass";
+@import "~bulma/sass/layout/_all.sass";
+@import "~bulma/sass/utilities/_all.sass";

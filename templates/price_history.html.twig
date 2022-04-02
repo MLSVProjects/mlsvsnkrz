@@ -27,18 +27,18 @@
 
                 <div class="columns">
                     <div class="column">
-                            <img src="{{ asset('image/midChicago.png') }}" >
+                            <img src="{{ asset(product.image) }}" >
                     </div>
 
                     <div class="column is-three-fifths">
                         <div class="row">
                             <p class="is-size-4">
-                                <b>Jordan 1 Mid Chicago</b>
+                                <b>{{ product.name }}</b>
                             </p>
                         </div>
 
                         <div class="row mt-2">
-                            <p class="is-size-5">From 268$</p>
+                            <p class="is-size-5">{{ product.price }}$</p>
                         </div>
 
                         <div class="row mt-2">
@@ -113,15 +113,15 @@
             <div class="box mt-6">
                 <div class="columns">
                     <div class="column is-one-third">
-                        <p>Jordan 1 Mid Chicago</p>
+                        <p>{{ product.name }}</p>
                     </div>
 
                     <div class="column is-one-third">
-                        <p class=" has-text-centered">268$</p>
+                        <p class=" has-text-centered">{{ product.price }}$</p>
                     </div>
 
                     <div class="column is-one-third has-text-right">
-                        <button class="button is-rounded is-black is-small" onclick="window.location.href='{{ path('shopping_card') }}'">Add to carte</button>
+                        <button class="button is-rounded is-black is-small" onclick="window.location.href='/shopping_card/{{ product.getId() }}'">Add to carte</button>
                     </div>
 
                 </div>
