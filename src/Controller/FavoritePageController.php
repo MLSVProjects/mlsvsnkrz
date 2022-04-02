@@ -13,7 +13,7 @@ class FavoritePageController extends AbstractController
      */
     public function home() : Response
     {
-        return $this->render('favorite_page.html.twig');
+        return $this->render('profile/favorite_page.html.twig');
     }
 
 }

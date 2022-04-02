@@ -14,7 +14,7 @@ class PriceHistoryController extends AbstractController
      */
     public function home(ProductRepository $productRepository, $id) : Response
     {
-        return $this->render('price_history.html.twig', ["product"=> $productRepository->find($id)]);
+        return $this->render('product/price_history.html.twig', ["product"=> $productRepository->find($id)]);
     }
 
 }

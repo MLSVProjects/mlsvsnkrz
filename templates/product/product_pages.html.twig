@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block body %}
+    {% include('utils/header.html.twig') %}
+
+
+	<div class="container mt-6">
+		<h4 class>Our Products </h4>
+		<nav class="level">
+			<div class="level-left">
+				<div class="level-item">
+					<button class="button is-rounded is-outlined is-active">Newest</button>
+				</div>
+				<div class="level-item">
+					<button class="button is-rounded is-black ml-2">Price ↑</button>
+				</div>
+				<div class="level-item">
+					<button class="button is-rounded is-black ml-2">Price ↓</button>
+				</div>
+			</div>
+			<div class="level-right">
+				<div class="level-item">
+					<button class="button is-rounded is-outlined is-active">← Previous</button>
+				</div>
+				<div class="level-item">
+					<p>1/10 </p>
+				</div>
+				<div class="level-item">
+					<button class="button is-rounded is-black ml-2">Next →</button>
+				</div>
+			</div>
+		</nav>
+
+        <h4 class="has-text-weight-bold">Filter by</h4>
+
+
+        {# box on left #}
+
+
+        <div class="columns">
+            <div class="column">
+                <div class="box">
+                	<span class="icon-text">
+                    	<a class="ml-2 is-size-5">Brand</a>
+                        <span class="icon">
+                        	<i class="fas fa-home"></i>
+                        </span>
+                        </span>
+                        	<a><br></br>Adidas<br></a>
+                            <a>Jordan<br></a>
+                            <a>New Balance<br></a>
+                            <a>Puma<br></a>
+                            <a>Nike<br></a>
+                </div>
+
+                <div class="box">
+                    <span class="icon-text">
+                        <a class="ml-2 is-size-5">Size(US)</a>
+                        <span class="icon">
+                            <i class="fas fa-home"></i>
+                        </span>
+                    </span>
+                    <a><br></br>6</a>
+                    <a>6.5</a>
+                    <a>7</a>
+                    <a>7.5</a>
+                    <a>8</a>
+                    <a>8.5</a>
+                    <a>9</a>
+                    <a>9.5</a>
+                    <a>10</a>
+                </div>
+
+                <div class="box">
+                    <span class="icon-text">
+                        <a class="ml-2 is-size-5">Price(USD)</a>
+                        <span class="icon">
+                        	<i class="fas fa-home"></i>
+                        </span>
+                    </span>
+                </div>
+
+                <div class="box">
+                    <span class="icon-text">
+                        <a class="ml-2 is-size-5">Release Date</a>
+                        <span class="icon">
+                            <i class="fas fa-home"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+
+            {% set nb = 0 %}
+
+        <div class="column is-two-thirds">
+            <div class="columns is-multiline">
+                {% for p in product %}
+					<div class="column is-one-third">
+						<div class="card mr-5">
+							<div class="card-image">
+								<figure class="image is-square">
+									{% if p.image is not null %}
+									<img style="object-fit: cover" src="{{ asset(p.image) }}" alt="Placeholder image">
+									{% endif %}
+								</figure>
+							</div>
+							<div class="card-content">
+								<div class="media">
+									<div class="media-content">
+										<p class="title is-4">{{ p.name }}</p>
+									</div>
+								</div>
+								<div class="content">
+									{{ p.price }}
+								</div>
+							</div>
+							<footer class="card-footer">
+								<a href="{{ path('product_detail', {id: p.getId()}) }}" class="card-footer-item">More detail</a>
+								<a href="#" class="card-footer-item">Add to favorite</a>
+							</footer>
+						</div>
+					</div>
+				{% endfor %}
+            </div>
+        </div>
+	</div>
+
+    {% include('utils/footer.html.twig') %}
+
+{% endblock %}

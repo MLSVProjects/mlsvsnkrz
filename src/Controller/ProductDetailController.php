@@ -15,7 +15,7 @@ class ProductDetailController extends AbstractController
 */
 public function home(ProductRepository $productRepository,$id) : Response
 {
-return $this->render('product_detail.html.twig', ["product"=> $productRepository->find($id)]);
+return $this->render('product/product_detail.html.twig', ["product"=> $productRepository->find($id)]);
 }
 
 /**

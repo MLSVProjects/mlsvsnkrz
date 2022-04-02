@@ -27,7 +27,9 @@
 
                 <div class="columns">
                     <div class="column">
+						{% if product.image is not null %}
                             <img src="{{ asset(product.image) }}" >
+						{% endif %}
                     </div>
 
                     <div class="column is-three-fifths">
@@ -121,7 +123,9 @@
                     </div>
 
                     <div class="column is-one-third has-text-right">
-                        <button class="button is-rounded is-black is-small" onclick="window.location.href='/shopping_card/{{ product.getId() }}'">Add to carte</button>
+						<form action="{{ path('add_to_cart', {product_id: product.getId}) }}" method="POST">
+                        	<input type="submit" class="button is-rounded is-black is-small" value="ADD TO CART"/>
+						</form>
                     </div>
 
                 </div>

@@ -15,7 +15,7 @@ class ProductPagesController extends AbstractController
      */
     public function home (ProductRepository $productRepository) : Response
     {
-        return $this->render('product_pages.html.twig', ["product"=> $productRepository->findAll()]);
+        return $this->render('product/product_pages.html.twig', ["product"=> $productRepository->findAll()]);
     }
 
 
