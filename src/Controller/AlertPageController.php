@@ -13,7 +13,7 @@ class AlertPageController extends AbstractController
      */
     public function home() : Response
     {
-        return $this->render('alert_page.html.twig');
+        return $this->render('product/alert_page.html.twig');
     }
 
 }

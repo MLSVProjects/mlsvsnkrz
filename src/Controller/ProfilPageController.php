@@ -13,7 +13,7 @@ class ProfilPageController extends AbstractController
      */
     public function home () : Response
     {
-        return $this->render('profil_page.html.twig');
+        return $this->render('profile/profil_page.html.twig');
     }
 
 }

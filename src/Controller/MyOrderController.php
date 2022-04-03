@@ -13,7 +13,7 @@ class MyOrderController extends AbstractController
      */
     public function home() : Response
     {
-        return $this->render('my_order.html.twig');
+        return $this->render('profile/my_order.html.twig');
     }
 
 }

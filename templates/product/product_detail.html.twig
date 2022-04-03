@@ -27,22 +27,24 @@
 
                 <div class="columns">
                     <div class="column">
-                        <img src="{{ asset('image/midChicago.png') }}" >
+						{% if product.image is not null %}
+                        <img src="{{ asset(product.image) }}" >
+						{% endif %}
                     </div>
 
                     <div class="column is-three-fifths">
                         <div class="row">
                             <p class="is-size-4">
-                            <b>Jordan 1 Mid Chicago</b>
+                            <b>{{ product.name }}</b>
                             </p>
                         </div>
 
                         <div class="row mt-2">
-                            <p class="is-size-5">From 268$</p>
+                            <p class="is-size-5">{{ product.price }} $</p>
                         </div>
 
                         <div class="row mt-2">
-                            <a class="button has-text-right">
+                            <a href="/addFavorite/{{ product.getId() }}/products" class="button has-text-right">
                             <span class="icon is-small">
                                 <i class="fas fa-solid fa-heart"></i>
                             </span>
@@ -73,21 +75,23 @@
             </div>
 
             <div class="row mt-6">
-                    <button class="button is-rounded is-black" onclick="window.location.href='{{ path('price_history') }}'" >ACCESS PRICE HISTORY</button>
+                    <button class="button is-rounded is-black" onclick="window.location.href='/price_history/{{ product.getId() }}'" >ACCESS PRICE HISTORY</button>
             </div>
 
             <div class="box mt-6">
                 <div class="columns">
-                    <div class="column is-one-third">
-                        <p>Jordan 1 Mid Chicago</p>
+                    <div class="column is-one-fourth">
+                        <p>{{ product.name }}</p>
                     </div>
 
                     <div class="column is-one-third">
-                        <p class=" has-text-centered">268$</p>
+                        <p class=" has-text-centered">{{ product.price }}$</p>
                     </div>
 
                     <div class="column is-one-third has-text-right">
-                        <button class="button is-rounded is-black is-small" onclick="window.location.href='{{ path('shopping_card') }}'">ADD TO CARD</button>
+						<form action="{{ path('add_to_cart', {product_id: product.getId}) }}" method="POST">
+                        	<input type="submit" class="button is-rounded is-black is-small" value="ADD TO CART"/>
+						</form>
                     </div>
 
                 </div>

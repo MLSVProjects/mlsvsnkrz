@@ -13,7 +13,7 @@ class ViewDetailController extends AbstractController
      */
     public function home() : Response
     {
-        return $this->render('view_detail.html.twig');
+        return $this->render('profile/view_detail.html.twig');
     }
 
 }

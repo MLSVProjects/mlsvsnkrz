@@ -15,10 +15,12 @@ class Bookmark
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'bookmarks')]
     #[ORM\JoinColumn(nullable: false)]
+    #[ORM\Column(type: 'integer')]
     private $user_id;
 
     #[ORM\ManyToOne(targetEntity: Product::class)]
     #[ORM\JoinColumn(nullable: false)]
+    #[ORM\Column(type: 'integer')]
     private $product_id;
 
     #[ORM\Column(type: 'datetime_immutable')]
@@ -37,19 +39,19 @@ class Bookmark
         return $this->user_id;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUserId(int $user_id): self
     {
         $this->user_id = $user_id;
 
         return $this;
     }
 
-    public function getProductId(): ?Product
+    public function getProductId(): int
     {
         return $this->product_id;
     }
 
-    public function setProductId(?Product $product_id): self
+    public function setProductId(int $product_id): self
     {
         $this->product_id = $product_id;
 
