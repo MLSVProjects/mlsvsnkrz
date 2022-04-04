@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Alert;
+use App\Entity\PriceHistory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -73,4 +74,21 @@ class AlertRepository extends ServiceEntityRepository
         ;
     }
     */
+
+	public function findAllGreaterThanPrice(PriceHistory $priceHistory): array
+    {
+        $entityManager = $this->getEntityManager();
+		$price = $priceHistory->getPrice();
+		$product = $priceHistory->getProductId();
+        $query = $entityManager->createQuery(
+            'SELECT a
+            FROM App\Entity\Alert a
+            WHERE a.price >= :price
+            AND a.product = :product'
+        )->setParameter('price', $price)
+		->setParameter('product', $product);
+
+        // returns an array of Product objects
+        return $query->getResult();
+    }
 }

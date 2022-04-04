@@ -59,16 +59,20 @@
                         <div class="row mt-2">
                             <div class="columns">
                                 <div class="column is-one-quarter">
-                                    <input class="input" type="text" placeholder="________$">
+									<form action="{{ path('addAlert', {id_product: product.getId}) }}" method="POST">
+                                    <input name="price" class="input" type="text" placeholder="________$"/>
                                 </div>
 
                                 <div class="row mt-2">
-                                    <a class="button is-rounded is-black has-text-left">
+                                    <input type="submit">
+									<a class="button is-rounded is-black has-text-left">
                             <span class="icon is-small">
                                 <i class="fas fa-solid fa-bell"></i>
                             </span>
                                         <p>Create Alarm</p>
                                     </a>
+								</input>
+								</form>
                                 </div>
                             </div>
                         </div>

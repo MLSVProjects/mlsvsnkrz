@@ -44,12 +44,21 @@
                         </div>
 
                         <div class="row mt-2">
-                            <a href="/addFavorite/{{ product.getId() }}/products" class="button has-text-right">
-                            <span class="icon is-small">
-                                <i class="fas fa-solid fa-heart"></i>
-                            </span>
-                                <p>Add to Favorite</p>
-                            </a>
+							{% if bookmark|length==0 %}
+								<a href="/addFavorite/{{ product.getId() }}" class="button has-text-right">
+								<span class="icon is-small">
+									<i class="fas fa-solid fa-heart"></i>
+								</span>
+									<p>Add to Favorite</p>
+								</a>
+							{% else %}
+								<a href="/deleteFromFavorite/{{ bookmark.getId() }}" class="button has-text-right">
+									<span class="icon is-small">
+										<i class="fas fa-solid fa-heart"></i>
+									</span>
+										<p>Remove from Favorite</p>
+								</a>
+							{% endif %}
                         </div>
 
                         <div class="row mt-2">

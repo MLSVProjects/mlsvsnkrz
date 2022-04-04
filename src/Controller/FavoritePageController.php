@@ -7,67 +7,53 @@ use App\Entity\Bookmark;
 use App\Repository\BookmarkRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ProductRepository;
-use function PHPUnit\Framework\equalTo;
+use Doctrine\Persistence\ManagerRegistry;
 
 class FavoritePageController extends AbstractController
 {
     /**
-     * @Route("/profil_page/favorite_page/", name="favorite_page", methods={"GET"})
+     * @Route("/profile/bookmarks/", name="bookmarks")
      */
-    public function home(BookmarkRepository $bookmarkRepository, ProductRepository $productRepository) : Response
+    public function home(BookMarkRepository $bookMarkRepository) : Response
     {
-
-        $id_user = ($this->getUser())->getId();
-        return $this->render('favorite_page.html.twig',["productRepository"=>$productRepository,"favoris"=>$bookmarkRepository->findBy(array('user_id' => $id_user))]);
+        return $this->render('profile/favorite_page.html.twig',[
+			"bookmarks"=>$bookMarkRepository->findBy(['user_id'=>$this->getUser()])
+		]);
     }
 
     /**
-     * @Route("/addFavorite/{id_product}/{page}", name="addFavorite", methods={"GET"})
+     * @Route("/addFavorite/{id_product}", name="addFavorite", methods={"GET"})
      */
-    public function addFavorite($id_product, $page, BookMarkRepository $bookMarkRepository, EntityManagerInterface $entityManager, ProductRepository $productRepository) : Response
+    public function addFavorite($id_product, ManagerRegistry $doctrine, ProductRepository $productRepository)
     {
-        $id_user = ($this->getUser())->getId();
-
-
-        $url = $page == 'products' ? 'http://127.0.0.1:8000/product_pages' : 'http://127.0.0.1:8000/';
-
-        foreach ($bookMarkRepository->findBy(array('user_id' => $id_user)) as $bookmark)
-        {
-            if ($bookmark->getProductId() == $id_product)
-                return new RedirectResponse($url);
-        }
-
+		$em = $doctrine->getManager();
+		$product = $productRepository->find($id_product);
+		$user = $this->getUser();
 
         $fav = new Bookmark();
-        $fav->setProductId($id_product);
-        $fav->setUserId($id_user);
-        $fav->setAddedAt(new \DateTimeImmutable());
-        $entityManager->persist($fav);
-        $entityManager->flush();
+        $fav->setProductId($product)
+		->setUserId($user)
+        ->setAddedAt(new \DateTimeImmutable());
 
-        return new RedirectResponse($url);
-
+		$em->persist($fav);
+        $em->flush();
+		return $this->redirectToRoute('bookmarks');
     }
 
     /**
-     * @Route("/deleteToFavorite/", name="DeleteToFavorite", methods={"GET"})
+     * @Route("/deleteFromFavorite/{bookmark_id}", name="DeleteFromFavorite")
      */
-    public function deleteToFavorite(BookMarkRepository $bookMarkRepository, EntityManagerInterface $entityManager)
+    public function deleteFromFavorite($bookmark_id, BookMarkRepository $bookMarkRepository, EntityManagerInterface $entityManager)
     {
-    $id = $_GET["id"];
-
-    $fav = $bookMarkRepository->find($id);
-    $entityManager->remove($fav);
-    $entityManager->flush();
-
-    return $this->redirectToRoute('favorite_page');
-
+		$fav = $bookMarkRepository->find($bookmark_id);
+		if($fav!==null) {
+			$entityManager->remove($fav);
+			$entityManager->flush();
+		}
+		
+		return $this->redirectToRoute('bookmarks');
     }
-
-
-
 }

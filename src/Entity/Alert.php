@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AlertRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Persistence\ManagerRegistry;
 
 #[ORM\Entity(repositoryClass: AlertRepository::class)]
 class Alert

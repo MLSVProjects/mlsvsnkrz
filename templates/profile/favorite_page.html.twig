@@ -27,21 +27,23 @@
 
             <div class="column is-6">
 
-                {% for fav in favoris %}
-
+                {% for fav in bookmarks %}
+				{% set product=fav.getProductId %}
                 <div class="row mt-4">
                     <div class="box">
                         <div class="columns">
                             <div class="column is-one-third">
-                                <img src="{{asset(productRepository.find(fav.getProductId()).image)}}" alt="Placeholder image">
+								{% if product.image is not null %}
+                                <img src="{{asset(product.image)}}" alt="Placeholder image">
+								{% endif %}
                             </div>
 
                             <div class="column is-one-third mt-6">
-                                <p>{{ productRepository.find(fav.getProductId()).name }}</p>
+                                <p>{{ product.name }}</p>
                             </div>
 
                             <div class="column is-one-third ml-6 mt-6">
-                                <a href="{{ path('DeleteToFavorite') }}?id={{ fav.id }}" class="button has-text-right">
+                                <a href="{{ path('DeleteFromFavorite', {'bookmark_id': fav.id}) }}" class="button has-text-right">
                             <span class="icon is-small">
                                 <i class="fas fa-solid fa-ban"></i>
                             </span>

@@ -262,11 +262,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function addBookmark(Bookmark $bookmark): self
     {
-        if (!$this->bookmarks->contains($bookmark)) {
-            $this->bookmarks[] = $bookmark;
-            $bookmark->setUserId($this);
-        }
-
+		$bookmark->setUserId($this);
+        $this->bookmarks->add($bookmark);
         return $this;
     }
 

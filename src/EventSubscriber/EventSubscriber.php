@@ -5,19 +5,23 @@ namespace App\EventSubscriber;
 use App\Entity\Product;
 use App\Entity\PriceHistory;
 use Doctrine\Bundle\DoctrineBundle\EventSubscriber\EventSubscriberInterface;
-use Doctrine\ORM\Event\LifecycleEventArgs as EventLifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+use App\Entity\Alert;
 
 class EasyAdminSubscriber implements EventSubscriberInterface
 {
 	private $doctrine;
 	private $em;
+	private $mailer;
 
-    public function __construct(ManagerRegistry $doctrine, EntityManagerInterface $em)
+    public function __construct(MailerInterface $mailer, ManagerRegistry $doctrine, EntityManagerInterface $em)
     {
+		$this->mailer = $mailer;
         $this->doctrine = $doctrine;
 		$this->em = $em;
     }
@@ -72,6 +76,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
 			->setDate(new \DateTimeImmutable());
 		$manager->persist($priceHistory);
 		$manager->flush();
+		$this->informUsers($priceHistory);
 	}
 
 	public function prePersist(LifecycleEventArgs $args)
@@ -82,5 +87,22 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             return;
         }
 		$entity->setImage('image/'.$entity->getImage());
+	}
+
+	public function informUsers($priceHistory)
+	{
+		$alerts = $this->doctrine->getRepository(Alert::class)->findAllGreaterThanPrice($priceHistory);
+
+		foreach($alerts as $alert) {
+			$user = $alert->getUser();
+			$email = (new Email())
+                ->from('jevoletoutesvosdonnes@gmail.com')
+                ->to($user->getEmail())
+                ->subject('Alert : a product has reached your goal !')
+                ->text($priceHistory->getProductId()->getName())
+                ->html('<p>'.$priceHistory->getProductId()->getName().'</p>');
+
+            $this->mailer->send($email);
+		}
 	}
 }
