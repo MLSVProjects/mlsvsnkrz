@@ -7,6 +7,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Uses;
 use PHPUnit\Framework\TestCase;
 use App\Entity\Order;
 use App\Entity\User;
+use App\Entity\OrderDetail;
 
 class OrderUnitTest extends TestCase
 {
@@ -77,5 +78,16 @@ class OrderUnitTest extends TestCase
             $this->assertEmpty($order->getShippingPrice());
             $this->assertEmpty($order->getOrderDetails());
         }
+    }
+
+    public function testAddGetRemove0rderDetail()
+    {
+        $order = new Order();
+        $orderDetail = new OrderDetail();
+
+        $order->addOrderDetail($orderDetail);
+        $this->assertContains($orderDetail, $order->getOrderDetails());
+        $order->removeOrderDetail($orderDetail);
+        $this->assertEmpty($order->getOrderDetails());
     }
 }

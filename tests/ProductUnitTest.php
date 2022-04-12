@@ -7,6 +7,8 @@ use PHPUnit\Framework\TestCase;
 use App\Entity\Product;
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\ProductDetail;
+use App\Entity\PriceHistory;
 
 class ProductUnitTest extends TestCase
 {
@@ -34,6 +36,7 @@ class ProductUnitTest extends TestCase
         $this->assertTrue($product->getUpdatedAt() === $date);
         $this->assertTrue($product->getDeletedAt() === $date);
         $this->assertTrue($product->getImage() === 'Paire1.png');
+        $this->assertTrue($product->__toString() === $product->getName());
     }
 
     public function testIsFalse()
@@ -81,6 +84,28 @@ class ProductUnitTest extends TestCase
         $this->assertEmpty($product->getBrand());
         $this->assertEmpty($product->getPrice());
         $this->assertEmpty($product->getProductDetails());
+        $this->assertEmpty($product->getPriceHistories());
+    }
+
+    public function testAddGetRemoveProductDetails()
+    {
+        $product = new Product();
+        $productDetails = new ProductDetail();
+
+        $product->addProductDetail($productDetails);
+        $this->assertContains($productDetails, $product->getProductDetails());
+        $product->removeProductDetail($productDetails);
+        $this->assertEmpty($product->getProductDetails());
+    }
+
+    public function testAddGetRemovePriceHistory()
+    {
+        $product = new Product();
+        $priceHistory = new PriceHistory();
+
+        $product->addPriceHistory($priceHistory);
+        $this->assertContains($priceHistory, $product->getPriceHistories());
+        $product->removePriceHistory($priceHistory);
         $this->assertEmpty($product->getPriceHistories());
     }
 }

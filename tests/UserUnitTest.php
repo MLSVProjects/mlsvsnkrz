@@ -5,6 +5,9 @@ namespace App\Tests;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
 use App\Entity\User;
+use App\Entity\Bookmark;
+use App\Entity\Order;
+use App\Entity\Alert;
 
 
 class UserUnitTest extends TestCase
@@ -27,7 +30,7 @@ class UserUnitTest extends TestCase
         $user->setUpdatedAt($datetime);
         $user->setDeletedAt($datetime);
 
-
+    $this->assertTrue($user->__toString() === $user->getEmail());
     $this->assertTrue($user->getEmail() === 'testtrue@gmail.com');
     $this->assertTrue($user->getRoles() === ['ROLE_USER']);
     $this->assertTrue($user->getPassword() === 'testtest');
@@ -40,7 +43,6 @@ class UserUnitTest extends TestCase
     $this->assertTrue($user->getCreatedAt() === $datetime);
     $this->assertTrue($user->getUpdatedAt() === $datetime);
     $this->assertTrue($user->getDeletedAt() === $datetime);
-
     }
 
     public function testIsFalse()
@@ -96,6 +98,39 @@ class UserUnitTest extends TestCase
         $this->assertEmpty($user->getAddress());
         $this->assertEmpty($user->getBookmarks());
         $this->assertEmpty($user->getOrders());
+        $this->assertEmpty($user->getAlerts());
+    }
+
+    public function testAddGetRemoveBookmark()
+    {
+        $user = new User();
+        $bookmark = new Bookmark();
+
+        $user->addBookmark($bookmark);
+        $this->assertContains($bookmark, $user->getBookmarks());
+        $user->removeBookmark($bookmark);
+        $this->assertEmpty($user->getBookmarks());
+    }
+
+    public function testAddGetRemoveOrder()
+    {
+        $user = new User();
+        $order = new Order();
+
+        $user->addOrder($order);
+        $this->assertContains($order, $user->getOrders());
+        $user->removeOrder($order);
+        $this->assertEmpty($user->getOrders());
+    }
+
+    public function testAddGetRemoveAlert()
+    {
+        $user = new User();
+        $alert = new Alert();
+
+        $user->addAlert($alert);
+        $this->assertContains($alert, $user->getAlerts());
+        $user->removeAlert($alert);
         $this->assertEmpty($user->getAlerts());
     }
 }
