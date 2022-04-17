@@ -2,6 +2,16 @@
 
 > Created by Merwane Zioui, Vincent Nguyen, Sofiane Djemaa, Leon Van Linden, as part of a school project
 
+Main features :
+- Registration system
+- Mailer system
+- Price alert system
+- Shopping cart system
+- Payment system
+- Bookmarks system
+- Product price history
+- Admin : can create products, update prices
+
 ## Langages Used
 ### Backend
 
@@ -81,3 +91,4 @@ symfony server:start
 
 - Admin : administratorMLSV@gmail.com adminadmin
 - User : merwane.zioui@gmail.com merwanemerwane
+- You can also create a user via the registration form
