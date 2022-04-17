@@ -23,8 +23,66 @@
     <div class="columns">
         <div class="column is-2"></div>
 
-{% include('utils/profilBox.html.twig') %}
+            {% include('utils/profilBox.html.twig') %}
+
+
+
+        <div class="column is-5">
+
+            <div class="row">
+                <div class="columns">
+                    <div class="column is-half">
+                        <p><strong>Name</strong> : {{ app.user.name }}</p>
+                    </div>
+
+                    <div class="column is-half  ml-6">
+                        <p><strong>Surname</strong> : {{ app.user.surname }}</p>
+                    </div>
+
+                </div>
+
+                <div class="columns">
+
+                    <div class="column is-half">
+                        <p><strong>Email</strong> : {{ app.user.email }}</p>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="column is-half">
+                        <p><strong>Adress</strong> : {{ app.user.address}}</p>
+                    </div>
+
+                    <div class="column is-half  ml-6">
+                        <p><strong>City</strong> : {{ app.user.city}}</p>
+                    </div>
+
+
+                </div>
+
+                <div class="columns">
+                    <div class="column is-half">
+                        <p><strong>Country</strong> : {{ app.user.country}}</p>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="column is-half"></div>
+                    <div class="column is-half ml-6">
+                        <button  class="button is-success is-rounded mt-4" href="{{ path("edit_profil") }}?idUser={{ app.user.id }}">Edit Profil</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
     </div>
+
+
+
+
 </div>
 
     {% include('utils/footer.html.twig') %}
