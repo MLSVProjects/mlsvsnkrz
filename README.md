@@ -4,7 +4,7 @@
 
 Main features :
 - Registration system
-- Mailer system
+- Mailer system (WARNING : Disable the antivirus if not working)
 - Price alert system
 - Shopping cart system
 - Payment system
