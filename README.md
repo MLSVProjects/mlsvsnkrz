@@ -76,3 +76,7 @@ symfony console doctrine:fixtures:load
 npm run build
 symfony server:start
 ```
+### Users
+
+Admin : administratorMLSV@gmail.com adminadmin
+User : merwane.zioui@gmail.com merwanemerwane
