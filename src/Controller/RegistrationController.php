@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\AppAuthenticator;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,9 +30,10 @@ class RegistrationController extends AbstractController
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
+			$user->setCreatedAt(new DateTimeImmutable());
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -40,9 +42,9 @@ class RegistrationController extends AbstractController
             $email = (new Email())
                 ->from('jevoletoutesvosdonnes@gmail.com')
                 ->to($user->getEmail())
-                ->subject('Creation succes')
+                ->subject('Account creation - Welcome to MLSVsnkrz !')
                 ->text('Welcome to MLSVsnkrz')
-                ->html('<p>Welcome to MLSVsnkrz in HTML</p>');
+                ->html('<p>Welcome to MLSVsnkrz '.$user->getName().'</p>');
 
             $mailer->send($email);
 
@@ -53,8 +55,8 @@ class RegistrationController extends AbstractController
             );
         }
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
+        return $this->renderForm('registration/register.html.twig', [
+            'form' => $form,
         ]);
     }
 }

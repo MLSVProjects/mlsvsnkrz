@@ -5,8 +5,11 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -24,16 +27,7 @@ class RegistrationFormType extends AbstractType
             ->add('surname')
             ->add('address')
             ->add('city')
-            ->add('country')
-            ->add('created_at', DateTimeType::class, array(
-    'input' => 'datetime_immutable',
-))
-            ->add('updated_at', DateTimeType::class, array(
-    'input' => 'datetime_immutable',
-))
-            ->add('deleted_at', DateTimeType::class, array(
-    'input' => 'datetime_immutable',
-))
+            ->add('country', CountryType::class)
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -42,7 +36,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('plainPassword', PasswordType::class, [
+            /*->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -56,7 +50,24 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
+            ])*/
+			->add('password', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'first_options'  => array('label' => 'Password'),
+                'second_options' => array('label' => 'Repeat Password'),
+				'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a password',
+                    ]),
+                    new Length([
+                        'min' => 8,
+                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 4096,
+					]),
+				],
+            ))
+			->add('submit', SubmitType::class)
         ;
     }
 

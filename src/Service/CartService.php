@@ -75,15 +75,17 @@ class CartService
 	public function generateCart(ProductRepository $productRepository): Array
 	{
 		$products = [];
-		foreach($this->getCart() as $cartItem) {
-			$product = $productRepository->find($cartItem['product_id']);
-			$products[] = [
-				'product_id' => $product->getId(),
-				'name' => $product->getName(),
-				'image' => $product->getImage(),
-				'price' => $product->getPrice(),
-				'quantity' => $cartItem['quantity']
-			];
+		if($this->getCart() !== null) {
+			foreach($this->getCart() as $cartItem) {
+				$product = $productRepository->find($cartItem['product_id']);
+				$products[] = [
+					'product_id' => $product->getId(),
+					'name' => $product->getName(),
+					'image' => $product->getImage(),
+					'price' => $product->getPrice(),
+					'quantity' => $cartItem['quantity']
+				];
+			}
 		}
 
 		return $products;
