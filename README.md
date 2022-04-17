@@ -66,11 +66,13 @@ NPM is a Javascript package manager. As Composer, it helps providing packages fo
 - https://getcomposer.org/download/
 - https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
 2. Clone the repository on your local machine.
-3. Go to the project directory. In your terminal, run the following commands :
+3. In the .env file, line 34, change "db_user", "db_password" and "db_name" with a currently existing user.
+4. Go to the project directory. In your terminal, run the following commands :
 ```console
 composer update
 npm install
 symfony console doctrine:migrations:migrate
 symfony console doctrine:fixtures:load
+npm run build
 symfony server:start
 ```
