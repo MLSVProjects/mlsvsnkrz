@@ -56,7 +56,7 @@ NPM is a Javascript package manager. As Composer, it helps providing packages fo
 
 ## Class diagram
 
-
+![Class Diagram](https://github.com/MLSVProjects/mlsvsnkrz/edit/develop/ClassDiagram.png)
 
 ## Setup steps
 
