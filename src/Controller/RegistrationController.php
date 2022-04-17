@@ -55,8 +55,9 @@ class RegistrationController extends AbstractController
             );
         }
 
-        return $this->renderForm('registration/register.html.twig', [
+        return $this->renderForm('registration/merwane.html.twig', [
             'form' => $form,
+			'errors' => $form->getErrors()
         ]);
     }
 }

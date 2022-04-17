@@ -29,9 +29,15 @@
                     <a href="{{ path('shopping_cart') }}" class ="icon has-text-black">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
-                    <a href="{{ path('profile') }}" class ="icon has-text-black">
+					{% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin') }}" class ="button">
+                        <p>Admin</p>
+                    </a>
+					{% else %}
+					<a href="{{ path('admin') }}" class ="icon has-text-black">
                         <i class="fas fa-user"></i>
                     </a>
+					{% endif %}
 					{% if app.user %}
 					<a href="{{ path('app_logout') }}" class ="button">
                         <p>Logout</p>
