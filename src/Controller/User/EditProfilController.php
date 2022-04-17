@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MyOrderController extends AbstractController
+class EditProfilController extends AbstractController
 {
     /**
-     * @Route("/my_order/", name="my_order", methods={"GET"})
+     * @Route("/edit_profile", name="edit_profil", methods={"GET"})
      */
     public function home() : Response
     {
-        return $this->render('profile/my_order.html.twig');
+        return $this->render('edit_profil.html.twig');
     }
 
 }

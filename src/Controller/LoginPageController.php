@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LoginPageController extends AbstractController
 {
     /**
-     * @Route("/login_page/", name="login_page", methods={"GET"})
+     * @Route("/login/", name="login_page")
      */
     public function home() : Response
     {

@@ -4,145 +4,105 @@
 {% endblock %}
 {% block body %}
     {% include('utils/header.html.twig') %}
+<div class="container mt-4">
 
-    <div class="columns mt-3">
+	<a href="{{ path('product_detail', {id: product.id}) }}" class="button has-text-right">
+		<span class="icon is-small">
+			<i class="fas fa-solid fa-arrow-left"></i>
+		</span>
+			<p>Back to product</p>
+	</a>
 
-        <div class="column"></div>
-
-        <div class="column is-two-thirds">
-
-            <div class="row">
-                <div class="field">
-                    <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Back to product">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-solid fa-arrow-left"></i>
-                        </span>
-
-                    </p>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-
-                <div class="columns">
-                    <div class="column">
-						{% if product.image is not null %}
-                            <img src="{{ asset(product.image) }}" >
-						{% endif %}
-                    </div>
-
-                    <div class="column is-three-fifths">
-                        <div class="row">
-                            <p class="is-size-4">
-                                <b>{{ product.name }}</b>
-                            </p>
-                        </div>
-
-                        <div class="row mt-2">
-                            <p class="is-size-5">{{ product.price }}$</p>
-                        </div>
-
-                        <div class="row mt-2">
-                            <a class="button has-text-right">
-                            <span class="icon is-small">
-                                <i class="fas fa-solid fa-heart"></i>
-                            </span>
-                                <p>Add to Favorite</p>
-                            </a>
-                        </div>
-
-                        <div class="row mt-2">
-                            <p>Notify me when the price is :</p>
-                        </div>
-
-                        <div class="row mt-2">
-                            <div class="columns">
-                                <div class="column is-one-quarter">
-									<form action="{{ path('addAlert', {id_product: product.getId}) }}" method="POST">
-                                    <input name="price" class="input" type="text" placeholder="________$"/>
-                                </div>
-
-                                <div class="row mt-2">
-                                    <input type="submit">
-									<a class="button is-rounded is-black has-text-left">
-                            <span class="icon is-small">
-                                <i class="fas fa-solid fa-bell"></i>
-                            </span>
-                                        <p>Create Alarm</p>
-                                    </a>
-								</input>
-								</form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="table-container mt-5 mb-6">
-                            <table class="table table is-bordered is-striped is-narrow is-hoverable is-fullwidth ">
-                                <thead>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Price</th>
-                                    </tr>
-
-                                    <tbody>
-                                    <tr>
-                                        <td>15/01/2022</td>
-                                        <td>315.00$</td>
-                                    </tr>
-                                    <tr>
-                                        <td>16/01/2022</td>
-                                        <td>310.00$</td>
-                                    </tr>
-                                    <tr>
-                                        <td>17/01/2022</td>
-                                        <td>215.00$</td>
-                                    </tr>
-                                    <tr>
-                                        <td>18/01/2022</td>
-                                        <td>240.00$</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>19/01/2022</td>
-                                        <td>268.00$</td>
-                                    </tr>
-                                    </tbody>
-                                </thead>
-                            </table>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="box mt-6">
-                <div class="columns">
-                    <div class="column is-one-third">
-                        <p>{{ product.name }}</p>
-                    </div>
-
-                    <div class="column is-one-third">
-                        <p class=" has-text-centered">{{ product.price }}$</p>
-                    </div>
-
-                    <div class="column is-one-third has-text-right">
-						<form action="{{ path('add_to_cart', {product_id: product.getId}) }}" method="POST">
-                        	<input type="submit" class="button is-rounded is-black is-small" value="ADD TO CART"/>
-						</form>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
+    <div class="columns">
+        <div class="column">
+			{% if product.image is not null %}
+                <img src="{{ asset(product.image) }}" >
+			{% endif %}
         </div>
 
-        <div class="column"></div>
+        <div class="column is-three-fifths">
+            <div class="row">
+                <p class="is-size-4">
+                    <b>{{ product.name }}</b>
+                </p>
+            </div>
 
+            <div class="row mt-2">
+                <p class="is-size-5">{{ product.price }}$</p>
+            </div>
+
+            <div class="row mt-2">
+                <a class="button has-text-right">
+                <span class="icon is-small">
+                    <i class="fas fa-solid fa-heart"></i>
+                </span>
+                    <p>Add to Favorite</p>
+                </a>
+            </div>
+
+            <div class="row mt-2">
+                <p>Notify me when the price is :</p>
+            </div>
+
+            <div class="row m-2">
+                <div class="columns">
+					<form action="{{ path('addAlert', {id_product: product.getId}) }}" method="POST">
+						<div class="field is-grouped">
+							<div class="control">
+								<input name="price" class="input" type="text" placeholder="________$" required/>
+							</div>
+							<div class="control">
+								<button type="submit" class="button is-rounded is-black has-text-left">
+									<span class="icon is-small">
+										<i class="fas fa-solid fa-bell"></i>
+									</span>
+									<p>Create alert</p>
+								</button>
+							</div>
+						</div>
+					</form>
+                </div>
+            </div>
+
+            <div class="table-container mt-5 mb-6">
+                <table class="table table is-bordered is-striped is-narrow is-hoverable is-fullwidth ">
+                	<thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Price</th>
+                        </tr>
+
+                        <tbody>
+							{% for history in histories %}
+								<tr>
+									<td>{{history.date|date("d-m-y")}}</td>
+									<td>{{history.price}}$</td>
+								</tr>
+							{% endfor %}
+                        </tbody>
+                    </thead>
+                </table>
+            </div>
+        </div>
     </div>
 
+	<div class="box mt-6">
+        <div class="columns">
+            <div class="column is-one-third">
+                <p>{{ product.name }}</p>
+            </div>
+
+            <div class="column is-one-third">
+                <p class=" has-text-centered">{{ product.price }}$</p>
+            </div>
+
+            <div class="column is-one-third has-text-right">
+				<form action="{{ path('add_to_cart', {product_id: product.getId}) }}" method="POST">
+                    <input type="submit" class="button is-rounded is-black is-small" value="ADD TO CART"/>
+				</form>
+            </div>
+        </div>
+    </div>
+</div>
     {% include('utils/footer.html.twig') %}
 {% endblock %}

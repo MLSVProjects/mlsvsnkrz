@@ -5,8 +5,7 @@
 {% block body %}
     {% include('utils/header.html.twig') %}
 
-
-	<div class="container mt-6">
+	<div class="container mt-4">
 		<h4 class>Our Products </h4>
 		<nav class="level">
 			<div class="level-left">
@@ -35,15 +34,11 @@
 
         <h4 class="has-text-weight-bold">Filter by</h4>
 
-
-        {# box on left #}
-
-
         <div class="columns">
             <div class="column">
                 <div class="box">
                 	<span class="icon-text">
-                    	<a class="ml-2 is-size-5">Brand</a>
+                    	<a class="is-size-5">Brand</a>
                         <span class="icon">
                         	<i class="fas fa-home"></i>
                         </span>
@@ -57,7 +52,7 @@
 
                 <div class="box">
                     <span class="icon-text">
-                        <a class="ml-2 is-size-5">Size(US)</a>
+                        <a class="is-size-5">Size(US)</a>
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
@@ -75,7 +70,7 @@
 
                 <div class="box">
                     <span class="icon-text">
-                        <a class="ml-2 is-size-5">Price(USD)</a>
+                        <a class="is-size-5">Price(USD)</a>
                         <span class="icon">
                         	<i class="fas fa-home"></i>
                         </span>
@@ -84,16 +79,13 @@
 
                 <div class="box">
                     <span class="icon-text">
-                        <a class="ml-2 is-size-5">Release Date</a>
+                        <a class="is-size-5">Release Date</a>
                         <span class="icon">
                             <i class="fas fa-home"></i>
                         </span>
                     </span>
                 </div>
             </div>
-
-
-            {% set nb = 0 %}
 
         <div class="column is-two-thirds">
             <div class="columns is-multiline">
@@ -114,12 +106,11 @@
 									</div>
 								</div>
 								<div class="content">
-									{{ p.price }}
+									{{ p.price }}$
 								</div>
 							</div>
 							<footer class="card-footer">
-								<a href="{{ path('product_detail', {id: p.getId()}) }}" class="card-footer-item">More detail</a>
-								<a href="#" class="card-footer-item">Add to favorite</a>
+								<a href="{{ path('product_detail', {id: p.getId()}) }}" class="card-footer-item has-text-black">More detail</a>
 							</footer>
 						</div>
 					</div>

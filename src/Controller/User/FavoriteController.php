@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\User;
 
 
 use App\Entity\Bookmark;
@@ -14,16 +14,6 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class FavoritePageController extends AbstractController
 {
-    /**
-     * @Route("/profile/bookmarks/", name="bookmarks")
-     */
-    public function home(BookMarkRepository $bookMarkRepository) : Response
-    {
-        return $this->render('profile/favorite_page.html.twig',[
-			"bookmarks"=>$bookMarkRepository->findBy(['user_id'=>$this->getUser()])
-		]);
-    }
-
     /**
      * @Route("/addFavorite/{id_product}", name="addFavorite", methods={"GET"})
      */
@@ -44,7 +34,7 @@ class FavoritePageController extends AbstractController
     }
 
     /**
-     * @Route("/deleteFromFavorite/{bookmark_id}", name="DeleteFromFavorite")
+     * @Route("/deleteFromFavorite/{bookmark_id}", name="deleteFromFavorite")
      */
     public function deleteFromFavorite($bookmark_id, BookMarkRepository $bookMarkRepository, EntityManagerInterface $entityManager)
     {

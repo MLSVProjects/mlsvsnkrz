@@ -1,24 +1,24 @@
-<div class="column is-3">
-    <div class="box mb-6">
-        <a onclick="window.location.href='{{ path('profil_page') }}'">My Personal information</a>
+<div class="column is-one-third">
+    <div class="box">
+        <a class="has-text-black" href="{{ path('profile') }}">My Personal Information</a>
         <span class="icon is-small">
             <i class="fas fa-solid fa-user ml-1"></i>
         </span>
         <br>
 
-        <a  onclick="window.location.href='{{ path('my_order') }}'"> <br>My Order</a>
+        <a class="has-text-black" href="{{ path('orders') }}"> <br>My Orders</a>
         <span class="icon is-small">
             <i class="fas fa-solid fa-box"></i>
         </span>
         <br>
 
-        <a onclick="window.location.href='favorite_page/'"><br>My favorite</a>
+        <a class="has-text-black" href="{{ path('bookmarks') }}"><br>My Favorites</a>
         <span class="icon is-small">
             <i class="fas fa-solid fa-heart"></i>
         </span>
         <br>
 
-        <a onclick="window.location.href='{{ path('alert_page') }}'"><br>My Alerts</a>
+        <a class="has-text-black" href="{{ path('alerts') }}"><br>My Alerts</a>
         <span class="icon is-small">
             <i class="fas fa-solid fa-bell"></i>
         </span>

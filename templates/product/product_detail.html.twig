@@ -3,117 +3,91 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 {% endblock %}
 {% block body %}
-    {% include('utils/header.html.twig') %}
+{% include('utils/header.html.twig') %}
+<div class="container mt-4">
+    <a href="{{ path('product_pages') }}" class="button has-text-right">
+		<span class="icon is-small">
+			<i class="fas fa-solid fa-arrow-left"></i>
+		</span>
+			<p>Back to products</p>
+	</a>
 
-    <div class="columns mt-3">
-
-        <div class="column"></div>
-
-        <div class="column is-two-thirds">
-
-            <div class="row">
-                <div class="field">
-                    <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Back to store">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-solid fa-arrow-left"></i>
-                        </span>
-
-                    </p>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-
-                <div class="columns">
-                    <div class="column">
-						{% if product.image is not null %}
-                        <img src="{{ asset(product.image) }}" >
-						{% endif %}
-                    </div>
-
-                    <div class="column is-three-fifths">
-                        <div class="row">
-                            <p class="is-size-4">
-                            <b>{{ product.name }}</b>
-                            </p>
-                        </div>
-
-                        <div class="row mt-2">
-                            <p class="is-size-5">{{ product.price }} $</p>
-                        </div>
-
-                        <div class="row mt-2">
-							{% if bookmark|length==0 %}
-								<a href="/addFavorite/{{ product.getId() }}" class="button has-text-right">
-								<span class="icon is-small">
-									<i class="fas fa-solid fa-heart"></i>
-								</span>
-									<p>Add to Favorite</p>
-								</a>
-							{% else %}
-								<a href="/deleteFromFavorite/{{ bookmark.getId() }}" class="button has-text-right">
-									<span class="icon is-small">
-										<i class="fas fa-solid fa-heart"></i>
-									</span>
-										<p>Remove from Favorite</p>
-								</a>
-							{% endif %}
-                        </div>
-
-                        <div class="row mt-2">
-                            <p>Select size :</p>
-                        </div>
-
-                        <div class="row mt-2">
-                            <button class="button is-rounded is-black">8US</button>
-                            <button class="button is-rounded is-black ml-2">8.5US</button>
-                            <button class="button is-rounded is-black ml-2">9US</button>
-                            <button class="button is-rounded is-black ml-2">9.5US</button>
-                        </div>
-
-                        <div class="row mt-2 mb-6">
-                            <button class="button is-rounded is-black">10US</button>
-                            <button class="button is-rounded is-black ml-2">10.5US</button>
-                            <button class="button is-rounded is-black ml-2">11US</button>
-                            <button class="button is-rounded is-black ml-2">11.5US</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-6">
-                    <button class="button is-rounded is-black" onclick="window.location.href='/price_history/{{ product.getId() }}'" >ACCESS PRICE HISTORY</button>
-            </div>
-
-            <div class="box mt-6">
-                <div class="columns">
-                    <div class="column is-one-fourth">
-                        <p>{{ product.name }}</p>
-                    </div>
-
-                    <div class="column is-one-third">
-                        <p class=" has-text-centered">{{ product.price }}$</p>
-                    </div>
-
-                    <div class="column is-one-third has-text-right">
-						<form action="{{ path('add_to_cart', {product_id: product.getId}) }}" method="POST">
-                        	<input type="submit" class="button is-rounded is-black is-small" value="ADD TO CART"/>
-						</form>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
+    <div class="columns">
+        <div class="column">
+			{% if product.image is not null %}
+            <img src="{{ asset(product.image) }}" >
+			{% endif %}
         </div>
 
-        <div class="column"></div>
+        <div class="column is-three-fifths">
+            <div class="row">
+                <p class="is-size-4">
+                <b>{{ product.name }}</b>
+                </p>
+            </div>
 
+            <div class="row mt-2">
+                <p class="is-size-5">{{ product.price }} $</p>
+            </div>
+
+            <div class="row mt-2">
+				{% if bookmark|length==0 %}
+					<a href="/addFavorite/{{ product.getId() }}" class="button has-text-right">
+					<span class="icon is-small">
+						<i class="fas fa-solid fa-heart"></i>
+					</span>
+						<p>Add to Favorite</p>
+					</a>
+				{% else %}
+					<a href="/deleteFromFavorite/{{ bookmark.getId() }}" class="button has-text-right">
+						<span class="icon is-small">
+							<i class="fas fa-solid fa-heart"></i>
+						</span>
+							<p>Remove from Favorite</p>
+					</a>
+				{% endif %}
+            </div>
+
+            <div class="row mt-2">
+                <p>Select size :</p>
+            </div>
+
+            <div class="row mt-2">
+                <button class="button is-rounded is-black">8US</button>
+                <button class="button is-rounded is-black ml-2">8.5US</button>
+                <button class="button is-rounded is-black ml-2">9US</button>
+                <button class="button is-rounded is-black ml-2">9.5US</button>
+            </div>
+
+            <div class="row mt-2 mb-6">
+                <button class="button is-rounded is-black">10US</button>
+                <button class="button is-rounded is-black ml-2">10.5US</button>
+                <button class="button is-rounded is-black ml-2">11US</button>
+                <button class="button is-rounded is-black ml-2">11.5US</button>
+            </div>
+        </div>
     </div>
 
-    {% include('utils/footer.html.twig') %}
+    <button class="button is-rounded is-black" onclick="window.location.href='/price_history/{{ product.getId() }}'" >ACCESS PRICE HISTORY</button>
+
+    <div class="box mt-6">
+        <div class="columns">
+            <div class="column is-one-fourth">
+                <p>{{ product.name }}</p>
+            </div>
+
+            <div class="column is-one-third">
+                <p class=" has-text-centered">{{ product.price }}$</p>
+            </div>
+
+            <div class="column is-one-third has-text-right">
+				<form action="{{ path('add_to_cart', {product_id: product.getId}) }}" method="POST">
+                    <input type="submit" class="button is-rounded is-black is-small" value="ADD TO CART"/>
+				</form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include('utils/footer.html.twig') %}
 {% endblock %}

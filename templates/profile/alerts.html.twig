@@ -1,0 +1,27 @@
+{% extends 'profile_base.html.twig' %}    
+{% block infos %}
+{% for alert in alerts %}
+    <div class="box">
+        <div class="columns">
+            <div class="column is-one-third">
+				{% if alert.product.image is not null %}
+                    <img src="{{asset(alert.product.image)}}" alt="Placeholder image">
+				{% endif %}
+				<p>{{ alert.product.name }}</p>
+            </div>
+
+            <div class="column is-one-third">
+                <p>Target price - {{alert.price}}$</p>
+            </div>
+
+            <div class="column is-one-third">
+                <a href="{{ path('removeAlert', {'alert_id': alert.id}) }}" class="button has-text-right">
+					<span class="icon is-small">
+						<i class="fas fa-solid fa-ban"></i>
+					</span>
+                </a>
+            </div>
+		</div>
+    </div>
+{% endfor %}
+{% endblock %}
