@@ -24,7 +24,9 @@ class PaymentController extends AbstractController
 	public function checkout(Request $request, StripeApiService $stripeApiService, CartService $cartService): Response
 	{
 		$sessionCart = $request->getSession();
-
+		if($cartService->getCart() === null) {
+			return $this->redirectToRoute('product_pages');
+		}
 		$session = $stripeApiService->createCheckout($cartService->getCart());
 
 		return $this->redirect($session->url, 303);

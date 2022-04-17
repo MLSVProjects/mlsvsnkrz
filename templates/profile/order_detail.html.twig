@@ -1,0 +1,73 @@
+{% extends 'profile_base.html.twig' %}
+{% block infos %}
+{% set orderDetails = order.orderDetails %}
+                    <div class="box">
+                        <div class="columns">
+                            <div class="column is-half">
+                                <p><strong>Order #{{order.id}}</strong></p>
+                            </div>
+
+                            <div class="column">
+                                <p>{{order.createdAt|date("d-m-y")}}</p>
+                            </div>
+                        </div>
+
+						{% for detail in orderDetails %}
+                        <div class="columns">
+                            <div class="column is-one-quarter">
+                                {% if detail.productId.image is not null %}
+								<img src="{{asset(detail.productId.image)}}" alt="Placeholder image">
+								{% endif %}
+                            </div>
+
+                            <div class="column is-one-quarter">
+                                <p>{{detail.productId.name}}</p>
+                            </div>
+
+                            <div class="column is-one-quarter">
+                                <p>Quantity<br></p>
+                                <p><strong>{{detail.quantity}}</strong></p>
+                            </div>
+
+                            <div class="column is-one-quarter">
+                                <p>{{detail.price}}$</p>
+                            </div>
+                        </div>
+						{% endfor %}
+
+                        <div class="columns">
+                            <div class="column is-three-quarters">
+                                <p><strong>Subtotal</strong></p>
+                            </div>
+
+                            <div class="column is-one-quarter">
+                                <p>{{order.price - order.shippingPrice}}$</p>
+                            </div>
+                        </div>
+
+
+                        <div class="columns">
+                            <div class="column is-one-quarter">
+                                <p><strong>Delivery</strong></p>
+                            </div>
+
+                            <div class="column is-two-quarters">
+								<p>{{order.shippingAddress}}</p>
+							</div>
+
+                            <div class="column is-one-quarter">
+                                <p>{{order.shippingPrice}}$</p>
+                            </div>
+                        </div>
+
+                        <div class="columns">
+                            <div class="column is-three-quarters">
+                                <p><strong>Total</strong></p>
+                            </div>
+
+                            <div class="column is-one-quarter">
+                                <p>{{order.price}}$</p>
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}

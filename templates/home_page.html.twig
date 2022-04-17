@@ -27,19 +27,18 @@
 
 
             {% set nb = 0 %}
-            <div class="row">
-                <div class="is-flex is-flex-direction-row is-justify-content-center">
+                <div class="columns">
 
                     {%  for p in product | slice(0,4)%}
 
                     {% set nb = nb+1 %}
 
-
+					<div class="column">
                         <div class="card mr-5">
                             <div class="card-image">
-                                <figure class="image is-4by3">
+                                <figure class="image is-square">
 									{% if p.image is not null %}
-                                    <img style="height: 200px; width: 300px" src="{{ asset(p.image) }}" alt="Placeholder image">
+                                    <img style="object-fit: cover" src="{{ asset(p.image) }}" alt="Placeholder image">
 									{% endif %}
                                 </figure>
                             </div>
@@ -55,15 +54,13 @@
                                 </div>
                             </div>
                             <footer class="card-footer">
-                                <a href="/product/{{ p.getId() }}" class="card-footer-item">More detail</a>
-                                <a href="/addFavorite/{{ p.getId() }}/home" class="card-footer-item">Add to favorite</a>
+                                <a href="/product/{{ p.getId() }}" class="card-footer-item has-text-black">More detail</a>
                             </footer>
                         </div>
-
+					</div>
                         {% endfor %}
                 </div>
                 </div>
-            </div>
         </div>
     </section>
     {% include('utils/footer.html.twig') %}

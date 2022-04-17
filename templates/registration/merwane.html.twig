@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+{% endblock %}
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="container container is-vcentered">
+		<div class = "columns is-centered is-vcentered">
+			<div class="column is-half">
+				{{ form_start(form) }}
+					<div class="field">
+						{{ form_label(form.email, 'Mail') }}
+						<div class="control">
+							{{form_widget(form.email, {'attr': {'class': 'input is-hovered is-rounded'}})}}
+						</div>
+					</div>
+					<div class="field">
+						<div class="form-group col-md-6">
+							{{ form_label(form.surname, 'Surname') }}
+							<div class="control">
+								{{ form_widget(form.surname, {'attr': {'class': 'input is-hovered is-rounded'}}) }}
+							</div>
+						</div>
+						<div class="">
+							{{ form_label(form.name, 'Name') }}
+							<div class="control">
+								{{ form_widget(form.name, {'attr': {'class': 'input is-hovered is-rounded'}}) }}
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<div class="form-group col-md-6">
+							{{ form_label(form.address, 'Address') }}
+							<div class="control">
+								{{ form_widget(form.address, {'attr': {'class': 'input is-hovered is-rounded'}}) }}
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							{{ form_label(form.city, 'City') }}
+							<div class="control">
+								{{ form_widget(form.city, {'attr': {'class': 'input is-hovered is-rounded'}}) }}
+							</div>
+						</div>
+						<div cla ss="form-group col-md-6">
+							{{ form_label(form.country, 'Country') }}
+							<div class="select">
+								{{ form_widget(form.country) }}
+							</div>
+						</div>
+					</div>
+					<div class="control">
+						{{ form_label(form.password, 'Password') }}
+						<div class="control">
+							{{ form_widget(form.password.first, {'attr': {'class': 'input is-hovered is-rounded'}}) }}
+						</div>
+					</div>
+
+					<div class="control">
+						{{ form_label(form.password, 'Repeat password') }}
+						<div class="control">
+							{{ form_widget(form.password.second, {'attr': {'class': 'input is-hovered is-rounded'}}) }}
+						</div>
+
+					</div>
+
+					<div class="control">
+						{{ form_row(form.agreeTerms, {'attr': {'class': 'checkbox'}})  }}
+					</div>
+					<div class="control">
+						{{ form_row(form.submit, {'attr': {'class': 'button is-outlined is-active is-rounded'}})  }}
+					</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+    </div>
+    
+{% endblock %}

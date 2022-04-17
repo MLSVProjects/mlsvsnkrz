@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Product;
 
 use App\Repository\ProductRepository;
 use ContainerLhReKSI\getProductRepositoryService;

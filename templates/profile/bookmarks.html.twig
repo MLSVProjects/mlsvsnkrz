@@ -1,0 +1,27 @@
+{% extends 'profile_base.html.twig' %}    
+{% block infos %}
+{% for fav in bookmarks %}
+	{% set product=fav.getProductId %}
+        <div class="box">
+            <div class="columns">
+                <div class="column is-one-third">
+					{% if product.image is not null %}
+                    <img src="{{asset(product.image)}}" alt="Placeholder image">
+					{% endif %}
+                </div>
+
+                <div class="column is-one-third">
+                    <p>{{ product.name }}</p>
+                </div>
+
+                <div class="column is-one-third">
+                    <a href="{{ path('deleteFromFavorite', {'bookmark_id': fav.id}) }}" class="button has-text-right">
+						<span class="icon is-small">
+							<i class="fas fa-solid fa-ban"></i>
+						</span>
+                	</a>
+                </div>
+			</div>
+        </div>
+{% endfor %}
+{% endblock %}

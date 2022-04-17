@@ -1,28 +1,52 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\User;
 
 use Doctrine\ORM\EntityManagerInterface;
 use App\Form\RegistrationFormType;
+use App\Repository\AlertRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\UserRepository;
+use App\Repository\BookmarkRepository;
 
-class ProfilPageController extends AbstractController
+class ProfilePageController extends AbstractController
 {
     /**
-     * @Route("/profil_page/", name="profil_page", methods={"GET"})
+     * @Route("/profile/", name="profile")
      */
     public function home () : Response
     {
-        return $this->render('profile/profil_page.html.twig');
+        return $this->render('profile/profile.html.twig');
+    }
+
+	/**
+     * @Route("/profile/alerts/", name="alerts")
+     */
+    public function alerts(AlertRepository $alertRepository) : Response
+    {
+        return $this->render('profile/alerts.html.twig', [
+			"alerts" => $alertRepository->findBy([
+				"user" => $this->getUser()
+			])
+		]);
     }
 
     /**
-     * @Route("/edit_profil/", name="edit_profil", methods={"POST"})
+     * @Route("/profile/bookmarks/", name="bookmarks")
+     */
+    public function bookmarks(BookMarkRepository $bookMarkRepository) : Response
+    {
+        return $this->render('profile/bookmarks.html.twig',[
+			"bookmarks"=>$bookMarkRepository->findBy(['user_id'=>$this->getUser()])
+		]);
+    }
+
+    /**
+     * @Route("/profile/edit/", name="edit_profile", methods={"POST"})
      */
     public function edit (UserRepository $userRepository, Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager ) : Response
     {

@@ -36,7 +36,15 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/profil_page, roles: ROLE_USER }
+         - { path: ^/profile, roles: ROLE_USER }
+         - { path: ^/payment, roles: ROLE_USER }
+         - { path: ^/checkout, roles: ROLE_USER }
+         - { path: ^/success, roles: ROLE_USER }
+         - { path: ^/cancel, roles: ROLE_USER }
+         - { path: ^/addAlert, roles: ROLE_USER }
+         - { path: ^/removeAlert, roles: ROLE_USER }
+         - { path: ^/addFavorite, roles: ROLE_USER }
+         - { path: ^/deleteFromFavorite, roles: ROLE_USER }
 
 when@test:
     security:

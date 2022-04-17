@@ -33,7 +33,7 @@ class Order
     private $shipping_price;
 
 	#[ORM\Column(type: 'datetime_immutable')]
-                            private $created_at;
+    private $created_at;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $updated_at;

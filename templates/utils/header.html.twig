@@ -14,15 +14,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-end">
             <a class="navbar-item" href="{{ path('product_pages') }}">
-                Men
-            </a>
-
-            <a class="navbar-item" href="{{ path('product_pages') }}">
-                Women
-            </a>
-
-            <a class="navbar-item">
-                Brands
+                Our products
             </a>
 
             <a class="navbar-item">
@@ -34,18 +26,27 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class ="icon has-text-black">
-                        <i class="fas fa-search "></i>
-                    </a>
-                    <a class ="icon has-text-black">
+                    <a href="{{ path('shopping_cart') }}" class ="icon has-text-black">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
-                    <a onclick="window.location.href='{{ path('profil_page') }}'" class ="icon has-text-black">
+					{% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin') }}" class ="button">
+                        <p>Admin</p>
+                    </a>
+					{% else %}
+					<a href="{{ path('admin') }}" class ="icon has-text-black">
                         <i class="fas fa-user"></i>
                     </a>
-                    <a class ="icon has-text-black">
-                            <i class="fas fa-question-circle"></i>
+					{% endif %}
+					{% if app.user %}
+					<a href="{{ path('app_logout') }}" class ="button">
+                        <p>Logout</p>
                     </a>
+					{% else %}
+					<a href="{{ path('app_login') }}" class ="button">
+                        <p>Login</p>
+                    </a>
+					{% endif %}
                 </div>
             </div>
         </div>
