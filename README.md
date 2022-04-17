@@ -78,5 +78,5 @@ symfony server:start
 ```
 ### Users
 
-Admin : administratorMLSV@gmail.com adminadmin
-User : merwane.zioui@gmail.com merwanemerwane
+- Admin : administratorMLSV@gmail.com adminadmin
+- User : merwane.zioui@gmail.com merwanemerwane
