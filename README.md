@@ -71,6 +71,7 @@ NPM is a Javascript package manager. As Composer, it helps providing packages fo
 ```console
 composer update
 npm install
+symfony console doctrine:database:create
 symfony console doctrine:migrations:migrate
 symfony console doctrine:fixtures:load
 npm run build
